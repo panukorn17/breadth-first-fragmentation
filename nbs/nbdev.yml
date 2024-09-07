@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "breadth-first-fragmentation"
+  site-url: "https://panukorn17.github.io/breadth-first-fragmentation"
+  description: "breadth first fragmentation package"
+  repo-branch: main
+  repo-url: "https://github.com/panukorn17/breadth-first-fragmentation"
