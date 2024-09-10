@@ -94,7 +94,7 @@ def check_bond_no(bonds:list, # the list of BRIC bonds locations
         fragComplete = False
         return frags, fragComplete
 
-# %% ../nbs/fragmentation.ipynb 31
+# %% ../nbs/fragmentation.ipynb 35
 def fragment_recursive(mol_smi_orig:str, # the original smiles string of the molecule
                        mol_smi:str, # the smiles string of the molecule
                        frags:list, # the list of fragments
@@ -178,7 +178,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
     except Exception:
         pass
 
-# %% ../nbs/fragmentation.ipynb 38
+# %% ../nbs/fragmentation.ipynb 42
 def break_into_fragments_defragmo(mol:Chem.rdchem.Mol, # the molecule object
                                   smi:str, # the smiles string of the molecule
                                   min_length: int=0, # the minimum number of atoms in a fragment
