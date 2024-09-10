@@ -35,7 +35,7 @@ def get_size(frag:Chem.rdchem.Mol, # input fragment
     real_atoms = total_atoms - dummies
     return real_atoms
 
-# %% ../nbs/fragmentation.ipynb 12
+# %% ../nbs/fragmentation.ipynb 17
 def replace_last(s:str, # the string (fragment) to which the dummy label * is to be replaced with another fragment
                  old:str, # the string from the fragment s to be replaced
                  new:str, # the string to replace the 'old' string in the fragment s
@@ -51,7 +51,7 @@ def replace_last(s:str, # the string (fragment) to which the dummy label * is to
     # Reverse the string back to original order
     return s_reversed[::-1]
 
-# %% ../nbs/fragmentation.ipynb 14
+# %% ../nbs/fragmentation.ipynb 19
 def check_reconstruction(frags:list[str], # list of fragments in SMILES format
                          frag_1:str, # head/tail fragment in SMILES format
                          frag_2:str, # head/tail fragment in SMILES format
@@ -82,7 +82,7 @@ def check_reconstruction(frags:list[str], # list of fragments in SMILES format
         #print('True Smiles:', smi, 'Fragment 1:' , frag_1, 'Fragment 2: ', frag_2, 'Reconstruction: ', recomb_canon)
         return False
 
-# %% ../nbs/fragmentation.ipynb 18
+# %% ../nbs/fragmentation.ipynb 23
 def check_bond_no(bonds:list, # the list of BRIC bonds locations
                   frags:list, # the list of fragments
                   frag_list_len:int, # the length of the fragment list
@@ -100,7 +100,7 @@ def check_bond_no(bonds:list, # the list of BRIC bonds locations
         fragComplete = False
         return frags, fragComplete
 
-# %% ../nbs/fragmentation.ipynb 20
+# %% ../nbs/fragmentation.ipynb 25
 def fragment_recursive(mol_smi_orig:str, # the original smiles string of the molecule
                        mol_smi:str, # the smiles string of the molecule
                        frags:list, # the list of fragments
@@ -184,7 +184,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
     except Exception:
         pass
 
-# %% ../nbs/fragmentation.ipynb 22
+# %% ../nbs/fragmentation.ipynb 27
 def break_into_fragments_defragmo(mol:Chem.rdchem.Mol, # the molecule object
                                   smi:str, # the smiles string of the molecule
                                   min_length: int=0, # the minimum number of atoms in a fragment
