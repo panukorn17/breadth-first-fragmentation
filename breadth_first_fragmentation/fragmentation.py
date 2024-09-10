@@ -70,19 +70,13 @@ def check_reconstruction(frags:list[str], # list of fragments in SMILES format
             frag_2_re = recomb_canon
         orig_smi_canon = MolToSmiles(MolFromSmiles(Chem.CanonSmiles(orig_smi)),rootedAtAtom = 1)
         if recomb_canon == orig_smi_canon:
-            #print('Reconstruction successful')
-            #print('Original Smiles:', orig_smi, 'Fragment 1:' , frag_1, 'Fragment 2: ', frag_2, 'Reconstruction: ', recomb_canon)
             return True
         else:
-            #print('Reconstruction failed')
-            #print('True Smiles:', smi, 'Fragment 1:' , frag_1, 'Fragment 2: ', frag_2, 'Reconstruction: ', recomb_canon)
             return False
     except:
-        #print('Reconstruction failed')
-        #print('True Smiles:', smi, 'Fragment 1:' , frag_1, 'Fragment 2: ', frag_2, 'Reconstruction: ', recomb_canon)
         return False
 
-# %% ../nbs/fragmentation.ipynb 28
+# %% ../nbs/fragmentation.ipynb 29
 def check_bond_no(bonds:list, # the list of BRIC bonds locations
                   frags:list, # the list of fragments
                   frag_list_len:int, # the length of the fragment list
@@ -100,7 +94,7 @@ def check_bond_no(bonds:list, # the list of BRIC bonds locations
         fragComplete = False
         return frags, fragComplete
 
-# %% ../nbs/fragmentation.ipynb 30
+# %% ../nbs/fragmentation.ipynb 31
 def fragment_recursive(mol_smi_orig:str, # the original smiles string of the molecule
                        mol_smi:str, # the smiles string of the molecule
                        frags:list, # the list of fragments
@@ -184,7 +178,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
     except Exception:
         pass
 
-# %% ../nbs/fragmentation.ipynb 32
+# %% ../nbs/fragmentation.ipynb 38
 def break_into_fragments_defragmo(mol:Chem.rdchem.Mol, # the molecule object
                                   smi:str, # the smiles string of the molecule
                                   min_length: int=0, # the minimum number of atoms in a fragment
