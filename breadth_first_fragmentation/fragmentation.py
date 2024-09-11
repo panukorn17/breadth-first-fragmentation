@@ -12,9 +12,8 @@ if '..' not in sys.path:
     sys.path.append('..')
 import numpy as np
 from rdkit import Chem
-from copy import deepcopy
 from rdkit.Chem import BRICS
-from .utilities import mol_from_smiles, mols_from_smiles, mol_to_smiles, root_smiles
+from .utilities import mol_from_smiles, mol_to_smiles, root_smiles
 
 # %% ../nbs/fragmentation.ipynb 4
 def count_dummies(mol:Chem.rdchem.Mol, # input molecule
@@ -179,8 +178,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
         pass
 
 # %% ../nbs/fragmentation.ipynb 42
-def break_into_fragments_defragmo(mol:Chem.rdchem.Mol, # the molecule object
-                                  smi:str, # the smiles string of the molecule
+def break_into_fragments_defragmo(smi:str, # the smiles string of the molecule
                                   min_length: int=0, # the minimum number of atoms in a fragment
                                   verbose:int=0, # print fragmentation process, set verbose to 1
                                   )->tuple: # a tuple containing the original smiles, the fragmented smiles, and the number of fragments
