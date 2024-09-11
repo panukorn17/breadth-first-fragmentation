@@ -18,7 +18,7 @@ or from
 [conda](https://anaconda.org/panukorn17/breadth-first-fragmentation)
 
 ``` sh
-$ conda install -c panukorn17 breadth_first_fragmentation
+$ conda install ptaleo17::breadth-first-fragmentation
 ```
 
 or from [pypi](https://pypi.org/project/breadth-first-fragmentation/)
