@@ -14,7 +14,7 @@ import numpy as np
 from rdkit import Chem
 from copy import deepcopy
 from rdkit.Chem import MolToSmiles, MolFromSmiles, BRICS
-from .utilities import mol_from_smiles, mols_from_smiles
+from .utilities import mol_from_smiles, mols_from_smiles, mol_to_smiles
 
 # %% ../nbs/fragmentation.ipynb 4
 def count_dummies(mol:Chem.rdchem.Mol, # input molecule
@@ -134,7 +134,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
             
             if head_bric_bond_no <= frag_list_len:
                 head_smi = Chem.CanonSmiles(MolToSmiles(head))
-                tail_smi = MolToSmiles(MolFromSmiles(Chem.CanonSmiles(MolToSmiles(tail))), rootedAtAtom=1)
+                tail_smi = mol_to_smiles(tail, rootedAtAtom=1)
                 if check_reconstruction(frags, head_smi, tail_smi, mol_smi_orig) & (get_size(head) >= min_length):
                     if verbose == 1:
                         print('Head fragment: ', head_smi)
@@ -156,7 +156,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
                         return frags
             elif tail_bric_bond_no <= frag_list_len:
                 tail_smi = Chem.CanonSmiles(MolToSmiles(tail))
-                head_smi = MolToSmiles(MolFromSmiles(Chem.CanonSmiles(MolToSmiles(head))), rootedAtAtom=1)
+                head_smi = mol_to_smiles(head, rootedAtAtom=1)
                 if check_reconstruction(frags, tail_smi, head_smi, mol_smi_orig) & (get_size(tail) >= min_length):
                     if verbose == 1:
                         print('Tail: ', tail_smi)
