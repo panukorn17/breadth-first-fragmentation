@@ -13,7 +13,7 @@ if '..' not in sys.path:
 import numpy as np
 from rdkit import Chem
 from copy import deepcopy
-from rdkit.Chem import MolToSmiles, MolFromSmiles, BRICS
+from rdkit.Chem import BRICS
 from .utilities import mol_from_smiles, mols_from_smiles, mol_to_smiles, root_smiles
 
 # %% ../nbs/fragmentation.ipynb 4
@@ -107,7 +107,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
     fragComplete = False
     try:
         counter += 1
-        mol = MolFromSmiles(mol_smi)
+        mol = mol_from_smiles(mol_smi)
         bonds = list(BRICS.FindBRICSBonds(mol))
 
         # Check if the mol has less bonds than the limit of BRIC bonds
@@ -144,7 +144,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
                     if fragComplete:
                         return frags
                 # if reconstruction fails, and there is only one bond, then add the fragment to the fragment list
-                elif (len(bond_idxs) == 1) & (get_size(MolFromSmiles(mol_smi)) >= min_length):
+                elif (len(bond_idxs) == 1) & (get_size(mol_from_smiles(mol_smi)) >= min_length):
                     if verbose == 1:
                         print('Final Fragment: ', mol_smi)
                     frags.append(root_smiles(mol_smi, rootedAtAtom=1))
@@ -165,7 +165,7 @@ def fragment_recursive(mol_smi_orig:str, # the original smiles string of the mol
                     fragComplete = fragment_recursive(mol_smi_orig, head_smi, frags, counter, frag_list_len = 0, min_length=min_length, verbose=verbose)  
                     if fragComplete:
                         return frags
-                elif (len(bond_idxs) == 1) & (get_size(MolFromSmiles(mol_smi)) >= min_length):
+                elif (len(bond_idxs) == 1) & (get_size(mol_from_smiles(mol_smi)) >= min_length):
                     if verbose == 1:
                         print('Final fragment: ', mol_smi)
                     frags.append(root_smiles(mol_smi, rootedAtAtom=1))
