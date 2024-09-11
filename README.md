@@ -60,10 +60,50 @@ respectively.
 
 ## How to use
 
-Fill me in please! Don’t forget code examples:
-
 ``` python
-1+1
+from breadth_first_fragmentation.fragmentation import break_into_fragments_defragmo
 ```
 
-    2
+``` python
+smi = 'CCCN(CCc1cccc(-c2ccccc2)c1)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O'
+break_into_fragments_defragmo(smi, min_length=0, verbose=1)
+```
+
+    Head fragment:  *CCC
+    Recurse tail:  N(*)(CCc1cccc(-c2ccccc2)c1)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O
+    Tail:  *CCc1cccc(-c2ccccc2)c1
+    Recurse Head:  N(*)(*)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O
+    Head fragment:  *N(*)*
+    Recurse tail:  C(*)(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O
+    Head fragment:  *C(*)=O
+    Recurse tail:  C1(*)OC(C(=O)O)=CC(N)C1NC(C)=O
+    Head fragment:  *NC1C(N)C=C(C(=O)O)OC1*
+    Recurse tail:  C(*)(C)=O
+    Final Fragment:  C(*)(C)=O
+
+    ('CCCN(CCc1cccc(-c2ccccc2)c1)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O',
+     '*CCC *CCc1cccc(-c2ccccc2)c1 *N(*)* *C(*)=O *NC1C(N)C=C(C(=O)O)OC1* C(*)(C)=O',
+     6)
+
+Visual representation of the breadth-first-fragmentation algorithm:
+</br>
+<img src="images/breadth-first-fragmentation.png" alt="breadth-first-fragmentation" style="width: 450px;"/>
+
+``` python
+smi = 'CCCN(CCc1cccc(-c2ccccc2)c1)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O'
+break_into_fragments_defragmo(smi, min_length=3, verbose=1)
+```
+
+    Head fragment:  *CCC
+    Recurse tail:  N(*)(CCc1cccc(-c2ccccc2)c1)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O
+    Tail:  *CCc1cccc(-c2ccccc2)c1
+    Recurse Head:  N(*)(*)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O
+    Head fragment:  *C(=O)N(*)*
+    Recurse tail:  C1(*)OC(C(=O)O)=CC(N)C1NC(C)=O
+    Head fragment:  *NC1C(N)C=C(C(=O)O)OC1*
+    Recurse tail:  C(*)(C)=O
+    Final Fragment:  C(*)(C)=O
+
+    ('CCCN(CCc1cccc(-c2ccccc2)c1)C(=O)C1OC(C(=O)O)=CC(N)C1NC(C)=O',
+     '*CCC *CCc1cccc(-c2ccccc2)c1 *C(=O)N(*)* *NC1C(N)C=C(C(=O)O)OC1* C(*)(C)=O',
+     5)
