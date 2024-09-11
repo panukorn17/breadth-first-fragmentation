@@ -9,16 +9,16 @@ __all__ = ['canonicalize', 'mol_to_smiles', 'mol_from_smiles', 'mols_to_smiles',
 from rdkit import Chem
 
 # %% ../nbs/utilities.ipynb 4
-def canonicalize(smi:str, # Input molecule in SMILES.
-                 clear_stereo:bool=False, # If True, clears stereochemistry of the molecule (remove the @@).
-                 )->str: # Canonicalised SMILES string.
-    "This function returns the canonicalised smiles representation and has the option to clear stereochemistry"
+def canonicalize(smi:str, # input molecule
+                 clear_stereo:bool=False, # if True, clears stereochemistry of the molecule (remove the @@)
+                 ) -> str: # canonicalised molecule
+    """This function returns the canonicalised smiles representation and has the option to clear stereochemistry"""
     mol = Chem.MolFromSmiles(smi)
     if clear_stereo:
         Chem.RemoveStereochemistry(mol)
     return Chem.MolToSmiles(mol, isomericSmiles=True)
 
-# %% ../nbs/utilities.ipynb 6
+# %% ../nbs/utilities.ipynb 11
 def mol_to_smiles(mol:Chem.rdchem.Mol, # molecule to convert into SMILES string
                   rootedAtAtom:int=None, # SMILES string rooted at the input atom
                   )->str: # canonicalized SMILES string
@@ -29,25 +29,25 @@ def mol_to_smiles(mol:Chem.rdchem.Mol, # molecule to convert into SMILES string
         return canonicalize(Chem.MolToSmiles(mol))
     
 
-# %% ../nbs/utilities.ipynb 8
+# %% ../nbs/utilities.ipynb 13
 def mol_from_smiles(smi:str, # Input molecule in SMILES.
                     )->Chem.rdchem.Mol: # Output molecule.
     "This function converts a SMILES string to a molecule."
     return Chem.MolFromSmiles(Chem.CanonSmiles(smi))
 
-# %% ../nbs/utilities.ipynb 10
+# %% ../nbs/utilities.ipynb 15
 def mols_to_smiles(mols:list[Chem.rdchem.Mol], # Input molecules
                    )->list[str]: # Output molecules in SMILES
     "This function converts a list of molecules to a list of SMILES strings."
     return [mol_to_smiles(mol) for mol in mols]
 
-# %% ../nbs/utilities.ipynb 12
+# %% ../nbs/utilities.ipynb 17
 def mols_from_smiles(smis, # Input molecules
                      )->list[Chem.rdchem.Mol]: # Output molecules.
     "This function converts a list of SMILES strings to a list of molecules."
     return [mol_from_smiles(smi) for smi in smis]
 
-# %% ../nbs/utilities.ipynb 14
+# %% ../nbs/utilities.ipynb 19
 def root_smiles(smi:str, # Input molecule in SMILES
                 rootedAtAtom:int, # SMILES string rooted at the input atom
                 )->str:
