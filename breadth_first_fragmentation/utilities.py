@@ -24,7 +24,7 @@ def mol_from_smiles(smi:str, # Input molecule in SMILES.
     "This function converts a SMILES string to a molecule."
     return Chem.MolFromSmiles(Chem.CanonSmiles(smi))
 
-# %% ../nbs/utilities.ipynb 13
+# %% ../nbs/utilities.ipynb 15
 def mol_to_smiles(mol:Chem.rdchem.Mol, # molecule to convert into SMILES string
                   rootedAtAtom:int=None, # SMILES string rooted at the input atom
                   ) -> str: # canonicalized SMILES string
@@ -35,7 +35,7 @@ def mol_to_smiles(mol:Chem.rdchem.Mol, # molecule to convert into SMILES string
         return canonicalize(Chem.MolToSmiles(mol))
     
 
-# %% ../nbs/utilities.ipynb 20
+# %% ../nbs/utilities.ipynb 22
 def root_smiles(smi:str, # Input molecule in SMILES
                 rootedAtAtom:int, # SMILES string rooted at the input atom
                 )->str:
