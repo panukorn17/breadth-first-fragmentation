@@ -15,7 +15,7 @@ $ pip install git+https://github.com/panukorn17/breadth-first-fragmentation.git
 ```
 
 or from
-[conda](https://anaconda.org/panukorn17/breadth-first-fragmentation)
+[conda](https://anaconda.org/ptaleo17/breadth-first-fragmentation)
 
 ``` sh
 $ conda install ptaleo17::breadth-first-fragmentation
@@ -33,7 +33,7 @@ Documentation can be found hosted on this GitHub
 [repository](https://github.com/panukorn17/breadth-first-fragmentation)’s
 [pages](https://panukorn17.github.io/breadth-first-fragmentation/).
 Additionally you can find package manager specific guidelines on
-[conda](https://anaconda.org/panukorn17/breadth-first-fragmentation) and
+[conda](https://anaconda.org/ptaleo17/breadth-first-fragmentation) and
 [pypi](https://pypi.org/project/breadth-first-fragmentation/)
 respectively.
 
