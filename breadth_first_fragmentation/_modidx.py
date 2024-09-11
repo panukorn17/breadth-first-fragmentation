@@ -30,4 +30,6 @@ d = { 'settings': { 'branch': 'main',
                                                        'breadth_first_fragmentation.utilities.mols_from_smiles': ( 'utilities.html#mols_from_smiles',
                                                                                                                    'breadth_first_fragmentation/utilities.py'),
                                                        'breadth_first_fragmentation.utilities.mols_to_smiles': ( 'utilities.html#mols_to_smiles',
-                                                                                                                 'breadth_first_fragmentation/utilities.py')}}}
+                                                                                                                 'breadth_first_fragmentation/utilities.py'),
+                                                       'breadth_first_fragmentation.utilities.root_smiles': ( 'utilities.html#root_smiles',
+                                                                                                              'breadth_first_fragmentation/utilities.py')}}}
