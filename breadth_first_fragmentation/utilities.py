@@ -20,9 +20,14 @@ def canonicalize(smi:str, # Input molecule in SMILES.
 
 # %% ../nbs/utilities.ipynb 6
 def mol_to_smiles(mol:Chem.rdchem.Mol, # molecule to convert into SMILES string
+                  rootedAtAtom:int=None, # SMILES string rooted at the input atom
                   )->str: # canonicalized SMILES string
     "This function converts a molecule to a SMILES string."
-    return canonicalize(Chem.MolToSmiles(mol))
+    if rootedAtAtom:
+        return Chem.MolToSmiles(Chem.MolFromSmiles(canonicalize(Chem.MolToSmiles(mol))), rootedAtAtom=rootedAtAtom)
+    else:
+        return canonicalize(Chem.MolToSmiles(mol))
+    
 
 # %% ../nbs/utilities.ipynb 8
 def mol_from_smiles(smi:str, # Input molecule in SMILES.
